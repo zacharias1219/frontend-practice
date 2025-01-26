@@ -1,5 +1,8 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter, Fugaz_One } from "next/font/google";
 import "./globals.css";
+
+const inter = Inter({ subsets: ["latin"] });
+const fugazOne = Fugaz_One({ subsets: ["latin"], weight: ["400"] });
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -17,12 +20,28 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+
+  const header = (
+    <header className="p-4 sm:p-8 flex items-center justify-between gap-4">
+      <h1 className={" " + fugazOne.className}>Moodle</h1>
+    </header>
+  )
+
+  const footer = (
+    <footer className="p-4 text-center">
+
+    </footer>
+  )
+
+
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={"w-full max-w-[1000px] mx-auto text-sm sm:text-base min-h-screen flex flex-col " + inter.className}
       >
+        {header}
         {children}
+        {footer}
       </body>
     </html>
   );
